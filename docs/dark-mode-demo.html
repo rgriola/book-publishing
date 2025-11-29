@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode Demo - An Immigrant's Story</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Light theme colors */
+      --color-primary: #2c3e50;
+      --color-text: #333333;
+      --color-text-light: #666666;
+      --color-background: #ffffff;
+      --color-background-alt: #f8f9fa;
+      --color-border: #e0e0e0;
+      --color-accent: #3498db;
+      --transition-base: 250ms ease;
+    }
+
+    html[data-theme="dark"] {
+      /* Dark theme colors */
+      --color-primary: #1a2332;
+      --color-text: #e4e4e7;
+      --color-text-light: #a1a1aa;
+      --color-background: #0f172a;
+      --color-background-alt: #1e293b;
+      --color-border: #334155;
+      --color-accent: #4a9eff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--color-background);
+      color: var(--color-text);
+      transition: background-color var(--transition-base), color var(--transition-base);
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--color-primary);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      transition: background-color var(--transition-base);
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem;
+      color: var(--color-text);
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin: 1.5rem 0 0.75rem;
+      color: var(--color-text);
+    }
+
+    .theme-controls {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+
+    .theme-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 0.375rem 0.625rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.125rem;
+      transition: all 150ms ease;
+      min-width: 40px;
+    }
+
+    .theme-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .theme-btn.active {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+    }
+
+    .card {
+      background: var(--color-background-alt);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: background-color var(--transition-base), border-color var(--transition-base);
+    }
+
+    .color-palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .color-swatch {
+      padding: 1rem;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 0.875rem;
+      border: 1px solid var(--color-border);
+    }
+
+    .bg-primary { background: var(--color-primary); color: white; }
+    .bg-background { background: var(--color-background); color: var(--color-text); }
+    .bg-background-alt { background: var(--color-background-alt); color: var(--color-text); }
+    .bg-accent { background: var(--color-accent); color: white; }
+
+    .example-text {
+      margin: 1rem 0;
+    }
+
+    .reading-sample {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.125rem;
+      line-height: 1.8;
+      max-width: 65ch;
+    }
+
+    .reading-sample em {
+      color: var(--color-accent);
+      font-style: italic;
+    }
+
+    .reading-sample p {
+      margin-bottom: 1rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .feature-item {
+      padding: 1rem;
+      background: var(--color-background-alt);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      transition: all var(--transition-base);
+    }
+
+    .feature-item:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .stat-card {
+      background: var(--color-background-alt);
+      padding: 1.5rem;
+      border-radius: 6px;
+      text-align: center;
+      border: 1px solid var(--color-border);
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--color-accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--color-text-light);
+      font-size: 0.875rem;
+    }
+
+    code {
+      background: var(--color-background-alt);
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 0.875rem;
+      border: 1px solid var(--color-border);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: var(--color-accent);
+      color: white;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .theme-controls {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Dark Mode Demo</h1>
+        <p style="margin: 0; opacity: 0.9;">An Immigrant's Story</p>
+      </div>
+      <div class="theme-controls">
+        <button class="theme-btn active" data-theme="light" title="Light theme">☀️</button>
+        <button class="theme-btn" data-theme="dark" title="Dark theme">🌙</button>
+      </div>
+    </header>
+
+    <div class="card">
+      <h2>🎨 Interactive Dark Mode Preview</h2>
+      <p>Click the theme buttons above to see how the dark mode works! Your preference will be saved automatically.</p>
+    </div>
+
+    <div class="card">
+      <h2>📖 Reading Sample</h2>
+      <p style="color: var(--color-text-light); margin-bottom: 1rem;">
+        See how the text looks in different themes. Dark mode reduces eye strain during long reading sessions.
+      </p>
+      <div class="reading-sample">
+        <p>When work was done, and <em>Nattura</em> give me permission to leave, I thought of stopping in the <em>piazza</em> to see <em>Carmela's</em> father, if he was there, if he was sober, but I decide I would give myself a few more days to get ready, because the words in my head were not right, but mixed up and confused.</p>
+        <p>As I come off the mountain trail, <em>Carmelo Iannuzzi</em> was lighting the last of the oil lamps, that cast orange across the <em>piazza</em>, making everything glow. Someone calls my name. I turned too quick toward the sound, losing my balance, and falling against a table where sat a solitary man.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🎯 Key Features</h2>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-icon">👁️</div>
+          <h3 style="font-size: 1rem; margin: 0.5rem 0;">Eye Comfort</h3>
+          <p style="font-size: 0.875rem; color: var(--color-text-light); margin: 0;">Reduces strain in low light</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🔋</div>
+          <h3 style="font-size: 1rem; margin: 0.5rem 0;">Battery Saver</h3>
+          <p style="font-size: 0.875rem; color: var(--color-text-light); margin: 0;">Saves power on OLED screens</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">💾</div>
+          <h3 style="font-size: 1rem; margin: 0.5rem 0;">Auto Save</h3>
+          <p style="font-size: 0.875rem; color: var(--color-text-light); margin: 0;">Remembers your choice</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">♿</div>
+          <h3 style="font-size: 1rem; margin: 0.5rem 0;">Accessible</h3>
+          <p style="font-size: 0.875rem; color: var(--color-text-light); margin: 0;">Keyboard & screen reader friendly</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🎨 Color Palette</h2>
+      <p style="color: var(--color-text-light);">Current theme's color scheme:</p>
+      <div class="color-palette">
+        <div class="color-swatch bg-primary">Primary</div>
+        <div class="color-swatch bg-background">Background</div>
+        <div class="color-swatch bg-background-alt">Alt Background</div>
+        <div class="color-swatch bg-accent">Accent</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📊 Usage Statistics</h2>
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-value">30-40%</div>
+          <div class="stat-label">Users prefer dark mode</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">60%</div>
+          <div class="stat-label">Less eye strain reported</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">25%</div>
+          <div class="stat-label">Battery savings (OLED)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💡 Tips for Best Experience</h2>
+      <div class="example-text">
+        <h3>🌙 Night Reading</h3>
+        <p>Use dark mode with increased font size for comfortable bedtime reading. Reduce screen brightness to 30-40%.</p>
+        
+        <h3>☀️ Daytime Reading</h3>
+        <p>Light mode provides excellent contrast in well-lit environments. Perfect for outdoor reading or bright rooms.</p>
+        
+        <h3>🔄 Auto Mode</h3>
+        <p>Let the system automatically adjust based on time of day and your device settings. Set it and forget it!</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>⚙️ Technical Details</h2>
+      <p>The dark mode feature uses modern web standards:</p>
+      <ul style="margin: 1rem 0; padding-left: 2rem; color: var(--color-text);">
+        <li>CSS Custom Properties for theming</li>
+        <li>LocalStorage for preference persistence</li>
+        <li><code>prefers-color-scheme</code> media query for auto mode</li>
+        <li>ARIA attributes for accessibility</li>
+        <li>Smooth transitions between themes</li>
+      </ul>
+      <p style="margin-top: 1rem;">
+        <span class="badge">Lightweight</span>
+        <span class="badge">Fast</span>
+        <span class="badge">Accessible</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🚀 What's Next?</h2>
+      <p>Try combining dark mode with other reader features:</p>
+      <ul style="margin: 1rem 0; padding-left: 2rem; color: var(--color-text);">
+        <li>Font size control for comfortable reading</li>
+        <li>Line spacing adjustment (coming soon)</li>
+        <li>Reading width control (coming soon)</li>
+        <li>Focus mode to minimize distractions (planned)</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Simple dark mode implementation for demo
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    const html = document.documentElement;
+    const storageKey = 'demo-theme-preference';
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem(storageKey) || 'light';
+    applyTheme(savedTheme);
+
+    // Button click handlers
+    themeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const theme = button.getAttribute('data-theme');
+        applyTheme(theme);
+        localStorage.setItem(storageKey, theme);
+      });
+    });
+
+    function applyTheme(theme) {
+      // Apply theme directly (no auto mode)
+      html.setAttribute('data-theme', theme);
+      
+      // Update button states
+      themeButtons.forEach(btn => {
+        const isActive = btn.getAttribute('data-theme') === theme;
+        btn.classList.toggle('active', isActive);
+      });
+    }
+
+    // Listen for system theme changes
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        // No auto mode, so we don't need to do anything
+      });
+    }
+  </script>
+</body>
+</html>

@@ -9,6 +9,7 @@ import chapterLoader from './chapterLoader.js';
 import navigation from './navigation.js';
 import analytics from './analytics.js';
 import fontSizeControl from './fontSizeControl.js';
+import darkMode from './darkMode.js';
 
 class Reader {
   constructor() {
@@ -33,6 +34,9 @@ class Reader {
       debug.error('Chapter container not found');
       return;
     }
+
+    // Initialize dark mode
+    darkMode.init();
 
     // Initialize font size control
     fontSizeControl.init();
