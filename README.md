@@ -1,9 +1,14 @@
 # An Immigrant's Story
 ### A Novel by Dick Griola
-
 A beautiful, responsive website for reading "An Immigrant's Story" online.
 
 ## 🚀 Features
+
+## Features to Possibly Add
+- Focus Mode - Simple but effective
+- Tier 3: Specialized
+- Dyslexia Font Option - Helps specific audience
+- Text-to-Speech - More complex but valuable
 
 - **Responsive Design** - Optimized for laptop, tablet (iPad), and mobile devices
 - **Easy Chapter Management** - Simply add HTML files to the `chapters/` folder

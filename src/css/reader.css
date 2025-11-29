@@ -12,7 +12,7 @@
   background-color: var(--color-primary);
   color: white;
   padding: var(--spacing-md) 0;
-  position: sticky;
+  position: sticky; /* Creates positioning context for progress bar */
   top: 0;
   z-index: var(--z-sticky);
   box-shadow: var(--shadow-md);

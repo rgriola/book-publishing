@@ -68,13 +68,12 @@ class ReadingProgress {
     progressText.textContent = '0%';
     progressContainer.appendChild(progressText);
 
-    // Insert after header
+    // Insert inside header at the bottom (so it sticks with the header)
     const header = document.querySelector('.reader-header');
-    if (header && header.nextSibling) {
-      header.parentNode.insertBefore(progressContainer, header.nextSibling);
-    } else if (header) {
-      header.parentNode.appendChild(progressContainer);
+    if (header) {
+      header.appendChild(progressContainer);
     } else {
+      // Fallback: insert at top of body if header not found
       document.body.insertBefore(progressContainer, document.body.firstChild);
     }
 

@@ -5,8 +5,8 @@
 
 /* Reading Progress Bar Container */
 .reading-progress-container {
-  position: sticky;
-  top: 0;
+  position: absolute;
+  bottom: 0;
   left: 0;
   right: 0;
   z-index: var(--z-sticky);
