@@ -99,11 +99,17 @@ class Reader {
     // Add chapter metadata
     const metadata = document.createElement('div');
     metadata.className = 'chapter-metadata';
-    metadata.innerHTML = `
-      <p class="chapter-info">
-        <span class="chapter-number-display">Chapter ${chapterData.number}</span>
-      </p>
-    `;
+    
+    const chapterInfo = document.createElement('p');
+    chapterInfo.className = 'chapter-info';
+    
+    const chapterNumberSpan = document.createElement('span');
+    chapterNumberSpan.className = 'chapter-number-display';
+    chapterNumberSpan.textContent = `Chapter ${chapterData.number}`; // Safe: uses textContent
+    
+    chapterInfo.appendChild(chapterNumberSpan);
+    metadata.appendChild(chapterInfo);
+    
     this.chapterContainer.insertBefore(metadata, this.chapterContainer.firstChild);
   }
 
