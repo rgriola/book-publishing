@@ -1,0 +1,229 @@
+/**
+ * Font Size Control CSS
+ * Styles for the font size adjustment feature
+ */
+
+/* Font size control container */
+.font-size-control {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-right: var(--spacing-md);
+}
+
+.font-size-label {
+  font-size: var(--font-size-sm);
+  color: white;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Button group */
+.font-size-buttons {
+  display: flex;
+  gap: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 4px;
+  border-radius: var(--border-radius-md);
+}
+
+/* Individual font size buttons */
+.font-size-btn {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 6px 10px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: all var(--transition-base);
+  min-width: 40px;
+  text-align: center;
+}
+
+.font-size-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.font-size-btn:active {
+  transform: translateY(0);
+}
+
+.font-size-btn.active {
+  background-color: white;
+  color: var(--color-primary);
+  border-color: white;
+  font-weight: 700;
+}
+
+.font-size-btn:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Apply font sizes using CSS custom property */
+.reading-content {
+  font-size: var(--reader-font-size, 18px);
+}
+
+/* Adjust line height proportionally */
+[data-font-size="small"] .reading-content {
+  line-height: 1.7;
+}
+
+[data-font-size="medium"] .reading-content {
+  line-height: 1.8;
+}
+
+[data-font-size="large"] .reading-content {
+  line-height: 1.9;
+}
+
+[data-font-size="xlarge"] .reading-content {
+  line-height: 2.0;
+}
+
+/* Adjust headings proportionally */
+[data-font-size="small"] .reading-content h1 {
+  font-size: 1.75em;
+}
+
+[data-font-size="medium"] .reading-content h1 {
+  font-size: 2em;
+}
+
+[data-font-size="large"] .reading-content h1 {
+  font-size: 2.25em;
+}
+
+[data-font-size="xlarge"] .reading-content h1 {
+  font-size: 2.5em;
+}
+
+[data-font-size="small"] .reading-content h2 {
+  font-size: 1.5em;
+}
+
+[data-font-size="medium"] .reading-content h2 {
+  font-size: 1.75em;
+}
+
+[data-font-size="large"] .reading-content h2 {
+  font-size: 2em;
+}
+
+[data-font-size="xlarge"] .reading-content h2 {
+  font-size: 2.25em;
+}
+
+[data-font-size="small"] .reading-content h3 {
+  font-size: 1.25em;
+}
+
+[data-font-size="medium"] .reading-content h3 {
+  font-size: 1.5em;
+}
+
+[data-font-size="large"] .reading-content h3 {
+  font-size: 1.75em;
+}
+
+[data-font-size="xlarge"] .reading-content h3 {
+  font-size: 2em;
+}
+
+/* Screen reader only content for announcements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive adjustments */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  .font-size-control {
+    margin-right: var(--spacing-sm);
+  }
+
+  .font-size-label {
+    display: none; /* Hide label on mobile to save space */
+  }
+
+  .font-size-buttons {
+    padding: 3px;
+    gap: 2px;
+  }
+
+  .font-size-btn {
+    padding: 5px 8px;
+    font-size: 12px;
+    min-width: 36px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .font-size-control {
+    margin-right: 0;
+  }
+
+  .font-size-buttons {
+    gap: 2px;
+  }
+
+  .font-size-btn {
+    padding: 4px 6px;
+    font-size: 11px;
+    min-width: 32px;
+  }
+
+  /* Stack controls vertically on very small screens if needed */
+  .reader-header .container {
+    flex-wrap: wrap;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .font-size-btn {
+    border-width: 2px;
+  }
+
+  .font-size-btn.active {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .font-size-btn {
+    transition: none;
+  }
+
+  .font-size-btn:hover {
+    transform: none;
+  }
+}
+
+/* Print styles - use comfortable reading size */
+@media print {
+  .font-size-control {
+    display: none;
+  }
+
+  .reading-content {
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+}

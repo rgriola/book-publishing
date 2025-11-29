@@ -8,6 +8,7 @@ import debug from './debug.js';
 import chapterLoader from './chapterLoader.js';
 import navigation from './navigation.js';
 import analytics from './analytics.js';
+import fontSizeControl from './fontSizeControl.js';
 
 class Reader {
   constructor() {
@@ -32,6 +33,9 @@ class Reader {
       debug.error('Chapter container not found');
       return;
     }
+
+    // Initialize font size control
+    fontSizeControl.init();
 
     // Initialize navigation
     navigation.init(async (chapterNumber) => {
