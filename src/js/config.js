@@ -14,15 +14,15 @@ const config = {
   get baseURL() {
     return this.env === 'development' 
       ? 'http://localhost:5500' 
-      : 'https://yourdomain.com';
+      : 'https://rgriola.github.io/book-publishing';
   },
 
   // Paths
   paths: {
-    chapters: '/chapters/',
-    assets: '/assets/',
-    images: '/assets/images/',
-    data: '/assets/data/'
+    chapters: '/book-publishing/chapters/',
+    assets: '/book-publishing/assets/',
+    images: '/book-publishing/assets/images/',
+    data: '/book-publishing/assets/data/'
   },
 
   // Chapter configuration
@@ -37,7 +37,7 @@ const config = {
   analytics: {
     enabled: true,
     storageKey: 'immigrantStoryAnalytics',
-    dataFile: '/assets/data/analytics.json'
+    dataFile: '/book-publishing/assets/data/analytics.json'
   },
 
   // Admin configuration
