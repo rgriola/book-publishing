@@ -1,0 +1,193 @@
+/**
+ * Typography CSS - Optimized for Reading
+ * An Immigrant's Story
+ */
+
+/* Reading Content Styles */
+.reading-content {
+  font-family: var(--font-reading);
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  color: var(--color-text);
+  max-width: var(--max-width-reading);
+  margin: 0 auto;
+}
+
+.reading-content h1 {
+  font-family: var(--font-reading);
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+  color: var(--color-primary);
+}
+
+.reading-content h2 {
+  font-family: var(--font-reading);
+  font-size: var(--font-size-3xl);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  color: var(--color-primary);
+}
+
+.reading-content h3 {
+  font-family: var(--font-reading);
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.reading-content p {
+  margin-bottom: var(--spacing-lg);
+  text-align: justify;
+  hyphens: auto;
+}
+
+.reading-content p:first-of-type::first-letter {
+  font-size: 3.5em;
+  line-height: 1;
+  float: left;
+  margin: 0 0.1em 0 0;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.reading-content em {
+  font-style: italic;
+}
+
+.reading-content strong {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.reading-content blockquote {
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-left: 4px solid var(--color-accent);
+  background-color: var(--color-background-alt);
+  font-style: italic;
+  color: var(--color-text-light);
+}
+
+.reading-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.reading-content ul,
+.reading-content ol {
+  margin-bottom: var(--spacing-lg);
+  padding-left: var(--spacing-2xl);
+}
+
+.reading-content li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.reading-content a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 2px;
+}
+
+.reading-content a:hover {
+  color: var(--color-accent-dark);
+  text-decoration-color: var(--color-accent-dark);
+}
+
+/* Chapter Metadata */
+.chapter-metadata {
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.chapter-info {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0;
+}
+
+.chapter-number-display {
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .reading-content {
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+  }
+
+  .reading-content h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .reading-content h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .reading-content h3 {
+    font-size: var(--font-size-xl);
+  }
+
+  .reading-content p:first-of-type::first-letter {
+    font-size: 2.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .reading-content {
+    font-size: 0.9375rem; /* 15px */
+  }
+
+  .reading-content h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .reading-content h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  .reading-content p {
+    text-align: left;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .reading-content {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+  }
+
+  .reading-content h1 {
+    font-size: 24pt;
+    page-break-after: avoid;
+  }
+
+  .reading-content h2 {
+    font-size: 18pt;
+    page-break-after: avoid;
+  }
+
+  .reading-content p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .chapter-metadata {
+    border-bottom: 1px solid #000;
+  }
+}

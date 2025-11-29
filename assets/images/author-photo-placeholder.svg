@@ -1,0 +1,19 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="150" cy="150" r="145" fill="#34495e"/>
+  <circle cx="150" cy="150" r="140" fill="#ecf0f1"/>
+  
+  <!-- Head -->
+  <circle cx="150" cy="120" r="45" fill="#bdc3c7"/>
+  
+  <!-- Body -->
+  <ellipse cx="150" cy="210" rx="60" ry="70" fill="#bdc3c7"/>
+  
+  <!-- Icon placeholder text -->
+  <text x="150" y="280" font-family="Arial, sans-serif" font-size="14" fill="#7f8c8d" text-anchor="middle">
+    Author Photo
+  </text>
+  <text x="150" y="295" font-family="Arial, sans-serif" font-size="12" fill="#95a5a6" text-anchor="middle">
+    Placeholder
+  </text>
+</svg>
