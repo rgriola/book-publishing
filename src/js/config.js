@@ -17,12 +17,15 @@ const config = {
       : 'https://rgriola.github.io/book-publishing';
   },
 
-  // Paths
-  paths: {
-    chapters: '/book-publishing/chapters/',
-    assets: '/book-publishing/assets/',
-    images: '/book-publishing/assets/images/',
-    data: '/book-publishing/assets/data/'
+  // Paths (environment-aware)
+  get paths() {
+    const prefix = this.env === 'development' ? '' : '/book-publishing';
+    return {
+      chapters: `${prefix}/chapters/`,
+      assets: `${prefix}/assets/`,
+      images: `${prefix}/assets/images/`,
+      data: `${prefix}/assets/data/`
+    };
   },
 
   // Chapter configuration
@@ -34,10 +37,13 @@ const config = {
   },
 
   // Analytics configuration
-  analytics: {
-    enabled: true,
-    storageKey: 'immigrantStoryAnalytics',
-    dataFile: '/book-publishing/assets/data/analytics.json'
+  get analytics() {
+    const prefix = this.env === 'development' ? '' : '/book-publishing';
+    return {
+      enabled: true,
+      storageKey: 'immigrantStoryAnalytics',
+      dataFile: `${prefix}/assets/data/analytics.json`
+    };
   },
 
   // Admin configuration

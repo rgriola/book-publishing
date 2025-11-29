@@ -107,6 +107,15 @@ class Reader {
     chapterNumberSpan.className = 'chapter-number-display';
     chapterNumberSpan.textContent = `Chapter ${chapterData.number}`; // Safe: uses textContent
     
+    // Add chapter title
+    if (chapterData.title) {
+      const titleSeparator = document.createTextNode(' - ');
+      chapterNumberSpan.appendChild(titleSeparator);
+      
+      const titleText = document.createTextNode(chapterData.title);
+      chapterNumberSpan.appendChild(titleText);
+    }
+    
     chapterInfo.appendChild(chapterNumberSpan);
     metadata.appendChild(chapterInfo);
     
