@@ -163,6 +163,12 @@ html[data-theme="dark"] #chapter-content p {
   color: var(--color-text);
 }
 
+/* Fix drop cap (first letter) in dark mode */
+html[data-theme="dark"] .reading-content p:first-of-type::first-letter,
+html[data-theme="dark"] .chapter-body p:first-of-type::first-letter {
+  color: var(--color-accent);
+}
+
 html[data-theme="dark"] #chapter-content em {
   color: var(--color-accent);
 }
