@@ -4,8 +4,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Environment files (keep templates, ignore local overrides)
-.env.local
+# Environment files - Keep these LOCAL only!
+.env.*
+!.env.example
 
 # OS files
 .DS_Store

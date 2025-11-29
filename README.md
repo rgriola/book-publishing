@@ -49,6 +49,24 @@ Grandpas-Story/
 
 ## 🎯 Getting Started
 
+### Initial Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/rgriola/book-publishing.git
+   cd book-publishing
+   ```
+
+2. **Set up environment files**
+   ```bash
+   # Copy example files to create your local configs
+   cp .env.development.example .env.development
+   cp .env.production.example .env.production
+   
+   # Edit them to add your admin code
+   # Change ADMIN_CODE=your_admin_code_here to your password
+   ```
+
 ### Local Development
 
 1. **Open with Live Server**
