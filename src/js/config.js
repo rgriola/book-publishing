@@ -42,7 +42,10 @@ const config = {
 
   // Admin configuration
   admin: {
-    code: '8123',
+    // Simple obfuscation - decode Base64
+    get code() {
+      return atob('ODEyMw=='); // Base64 encoded '8123'
+    },
     sessionKey: 'adminAuthenticated'
   },
 
