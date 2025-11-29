@@ -10,6 +10,7 @@ import navigation from './navigation.js';
 import analytics from './analytics.js';
 import fontSizeControl from './fontSizeControl.js';
 import darkMode from './darkMode.js';
+import readingProgress from './readingProgress.js';
 
 class Reader {
   constructor() {
@@ -55,6 +56,10 @@ class Reader {
     // Setup menu toggle
     this.setupMenuToggle();
 
+    // Initialize reading progress
+    const initialChapter = navigation.getCurrentChapter();
+    readingProgress.init(initialChapter);
+
     debug.log('Reader initialized successfully');
   }
 
@@ -80,6 +85,9 @@ class Reader {
 
       // Track analytics
       analytics.trackView(chapterNumber, chapterData.title);
+
+      // Update reading progress
+      readingProgress.updateChapter(chapterNumber);
 
       // Hide loading indicator
       this.hideLoading();
