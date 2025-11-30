@@ -20,6 +20,7 @@
   overflow: hidden;
 }
 
+/* Background image layer */
 .landing-hero::before {
   content: '';
   position: absolute;
@@ -27,8 +28,24 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect fill="rgba(255,255,255,0.02)" width="100" height="100"/></svg>');
-  opacity: 0.5;
+  background-image: url('/assets/images/hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* Dark overlay for better text readability */
+.landing-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(270deg, rgba(44, 62, 80, 0.1) 0%, rgba(52, 73, 94,.5) 100%);
+  z-index: 0;
 }
 
 .hero-content {
@@ -40,6 +57,7 @@
 
 .book-cover {
   max-width: 250px;
+  padding-top: var(--spacing-lg);
   margin: 0 auto var(--spacing-2xl);
   box-shadow: var(--shadow-xl);
   border-radius: var(--radius-md);
