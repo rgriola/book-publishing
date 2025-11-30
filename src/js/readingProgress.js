@@ -14,6 +14,7 @@ class ReadingProgress {
     this.resumeButton = null;
     this.currentChapter = null;
     this.scrollPosition = 0;
+    this.scrollPromptShown = false; // Track if prompt was shown this session
   }
 
   /**
@@ -269,9 +270,15 @@ class ReadingProgress {
     const bookmark = this.getBookmark();
     if (!bookmark) return;
 
-    // If we're on the bookmarked chapter, scroll to saved position
-    if (bookmark.chapter === this.currentChapter && bookmark.scrollPosition > 100) {
+    // Only show prompt if:
+    // 1. We're on the bookmarked chapter
+    // 2. Progress is at least 20% (meaningful position)
+    // 3. Haven't shown the prompt yet this session
+    if (bookmark.chapter === this.currentChapter && 
+        bookmark.progress >= 20 && 
+        !this.scrollPromptShown) {
       this.showScrollPrompt(bookmark.scrollPosition);
+      this.scrollPromptShown = true;
     }
   }
 
@@ -279,13 +286,13 @@ class ReadingProgress {
    * Show prompt to scroll to saved position
    */
   showScrollPrompt(scrollPosition) {
-    // Create a subtle prompt
+    // Create a compact, subtle prompt
     const prompt = document.createElement('div');
     prompt.className = 'scroll-prompt';
     prompt.innerHTML = `
-      <span>Continue from where you left off?</span>
-      <button class="scroll-prompt-btn">Yes</button>
-      <button class="scroll-prompt-btn secondary">No</button>
+      <span>📖 Continue reading?</span>
+      <button class="scroll-prompt-btn" aria-label="Continue from saved position">Yes</button>
+      <button class="scroll-prompt-btn secondary" aria-label="Start from top">No</button>
     `;
 
     const content = document.querySelector('.reader-content');
@@ -303,12 +310,12 @@ class ReadingProgress {
       prompt.remove();
     });
 
-    // Auto-dismiss after 10 seconds
+    // Auto-dismiss after 8 seconds (reduced from 10)
     setTimeout(() => {
       if (prompt.parentNode) {
         prompt.remove();
       }
-    }, 10000);
+    }, 8000);
   }
 
   /**
@@ -381,6 +388,9 @@ class ReadingProgress {
     
     // Reset progress bar
     this.updateProgressBar(0);
+    
+    // Reset scroll prompt flag when changing chapters
+    this.scrollPromptShown = false;
     
     debug.log(`Chapter updated to: ${chapterNumber}`);
   }

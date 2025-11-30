@@ -7,6 +7,7 @@ yarn-error.log*
 # Environment files - Keep these LOCAL only!
 .env.*
 !.env.example
+example.html
 
 # OS files
 .DS_Store

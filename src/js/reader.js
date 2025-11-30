@@ -110,32 +110,8 @@ class Reader {
     debug.log(`Displaying chapter: ${chapterData.title}`);
 
     // Update chapter container
+    // Chapter number and title are already in the HTML files, so no need to add them here
     this.chapterContainer.innerHTML = chapterData.content;
-
-    // Add chapter metadata
-    const metadata = document.createElement('div');
-    metadata.className = 'chapter-metadata';
-    
-    const chapterInfo = document.createElement('p');
-    chapterInfo.className = 'chapter-info';
-    
-    const chapterNumberSpan = document.createElement('span');
-    chapterNumberSpan.className = 'chapter-number-display';
-    chapterNumberSpan.textContent = `Chapter ${chapterData.number}`; // Safe: uses textContent
-    
-    // Add chapter title
-    if (chapterData.title) {
-      const titleSeparator = document.createTextNode(' - ');
-      chapterNumberSpan.appendChild(titleSeparator);
-      
-      const titleText = document.createTextNode(chapterData.title);
-      chapterNumberSpan.appendChild(titleText);
-    }
-    
-    chapterInfo.appendChild(chapterNumberSpan);
-    metadata.appendChild(chapterInfo);
-    
-    this.chapterContainer.insertBefore(metadata, this.chapterContainer.firstChild);
   }
 
   /**

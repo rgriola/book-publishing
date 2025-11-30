@@ -30,7 +30,7 @@ const config = {
 
   // Chapter configuration
   chapters: {
-    total: 20,
+    total: 21,
     filePrefix: 'chapter-',
     fileExtension: '.html',
     defaultTitle: 'Chapter'
