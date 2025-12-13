@@ -245,6 +245,74 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
+/* Mailchimp / signup form styles */
+.mailchimp-form {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  align-items: center;
+  justify-content: center;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mailchimp-form input[type="email"], .mailchimp-form input[type="text"] {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+}
+
+.mailchimp-form .cta-button {
+  width: auto;
+  padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+.mailchimp-form .mc-privacy {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  margin-top: var(--spacing-sm);
+}
+
+/* Inline compact form for author section */
+.mailchimp-form-inline {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  margin-top: var(--spacing-md);
+}
+
+.mailchimp-form-inline input[type="email"] {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  font-size: var(--font-size-base);
+}
+
+.mailchimp-form-inline .btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+}
+
+/* Utility: visually-hidden */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* Ensure forms look good on mobile */
+@media (max-width: 480px) {
+  .mailchimp-form-inline { flex-direction: column; align-items: stretch; }
+  .mailchimp-form-inline .btn { width: 100%; }
+}
+
 /* Responsive Landing Page */
 @media (max-width: 768px) {
   .landing-hero {

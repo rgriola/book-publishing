@@ -39,6 +39,16 @@
       <p class="book-subtitle">A Book about Hope, Struggle, and Triumph</p>
       <p class="author-name">by Dick Griola</p>
       <button id="start-reading-btn" class="cta-button">Start Reading</button>
+
+      <!-- Placeholder email input to gate access (local-only placeholder) -->
+      <form id="email-placeholder-form" class="mailchimp-form" action="#" method="post" novalidate aria-label="Enter your email to get access">
+        <label for="email-placeholder" class="visually-hidden">Email address</label>
+        <input type="email" name="EMAIL" id="email-placeholder" placeholder="Enter your email to get access" required>
+        <input type="text" name="FNAME" id="email-placeholder-name" placeholder="First name (optional)">
+        <button type="submit" class="cta-button">Get Access</button>
+        <div class="email-feedback" aria-live="polite"></div>
+        <p class="mc-privacy">By entering your email you agree to receive occasional updates. <a href="privacy.html">Privacy policy</a>.</p>
+      </form>
     </div>
   </section>
 
@@ -93,6 +103,15 @@
                 <span>Listen to the Author on YouTube</span>
               </a>
             </div>
+
+            <!-- Compact placeholder signup in author section -->
+            <form id="email-placeholder-form-author" class="author-signup mailchimp-form-inline" action="#" method="post" novalidate aria-label="Subscribe to author updates">
+              <label for="email-placeholder-author" class="visually-hidden">Email address</label>
+              <input type="email" id="email-placeholder-author" name="EMAIL" placeholder="Your email" required>
+              <button type="submit" class="btn btn-secondary">Subscribe</button>
+              <div class="email-feedback-author" aria-live="polite"></div>
+            </form>
+
           </div>
         </div>
       </div>
@@ -141,5 +160,9 @@
 
   <!-- JavaScript Module -->
   <script type="module" src="src/js/main.js"></script>
+  <script type="module" src="src/js/email-placeholder.js"></script>
+
+  <!-- Mailchimp connected script (loads mcjs for embedded forms) -->
+  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/7f5676666b7f45ab3d3921fd2/65f13d2152ff1daf1085596b6.js");</script>
 </body>
 </html>
