@@ -12,19 +12,20 @@ const config = {
 
   // Base URLs (auto-detected)
   get baseURL() {
-    return this.env === 'development' 
-      ? 'http://localhost:5500' 
-      : 'https://rgriola.github.io/book-publishing';
+    // Prefer an injected global (set by hosting environment) -> development default -> runtime origin
+    if (window.__SITE_BASE_URL__) return window.__SITE_BASE_URL__;
+    return this.env === 'development'
+      ? 'http://localhost:5500'
+      : window.location.origin;
   },
 
-  // Paths (environment-aware)
+  // Paths (environment-aware) - use relative paths so hosts like Netlify work without a repo prefix
   get paths() {
-    const prefix = this.env === 'development' ? '' : '/book-publishing';
     return {
-      chapters: `${prefix}/chapters/`,
-      assets: `${prefix}/assets/`,
-      images: `${prefix}/assets/images/`,
-      data: `${prefix}/assets/data/`
+      chapters: 'chapters/',
+      assets: 'assets/',
+      images: 'assets/images/',
+      data: 'assets/data/'
     };
   },
 
@@ -38,11 +39,10 @@ const config = {
 
   // Analytics configuration
   get analytics() {
-    const prefix = this.env === 'development' ? '' : '/book-publishing';
     return {
       enabled: true,
       storageKey: 'immigrantStoryAnalytics',
-      dataFile: `${prefix}/assets/data/analytics.json`
+      dataFile: `${this.paths.data}analytics.json`
     };
   },
 
